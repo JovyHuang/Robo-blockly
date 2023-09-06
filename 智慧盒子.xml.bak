@@ -1,0 +1,1030 @@
+﻿ <!--
+type="company" 
+block="block/智慧盒子.js" 
+generator="generator/智慧盒子.js" 
+language="language/智慧盒子/"
+examples="examples/智慧盒子"
+media="media/智慧盒子"
+pin="companypin/智慧盒子"
+lib="智慧盒子"
+hardware="hardware/arduino" 
+-->
+<!-- 
+Author:
+Date:
+E-mail:
+-->
+<script type="text/javascript" src="../../blocks/company/智慧盒子.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/智慧盒子.js"></script>
+
+<category id="X1" name="智慧盒子" colour="160">
+	<category id="Y1" name="一阶模块" colour="140">	
+<!-----------------------------蜂鸣器---------------------------------->
+    <category id="Tone_1" name="声音" colour="120">
+		  <block type="Tone">
+		    <field name="tone">HIGH</field>
+		  </block>
+		  
+		  <block type="Tone2">
+		    <field name="tone">262</field>
+		    <field name="de">1000</field>
+		    <value name="time">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>
+
+<!-----------------------------RGB---------------------------------->          
+    <category id="Light_belt" name="RGB灯带" colour="120">
+		  <block type="RGB">
+		    <value name="RGB1">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="RGB2">
+		      <shadow type="RGB_color_seclet">
+		        <field name="COLOR">#ff0000</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="RGB2">
+		    <value name="RGB2">
+		      <shadow type="RGB_color_seclet">
+		        <field name="COLOR">#ff0000</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>          
+
+<!-----------------------------数码管---------------------------------->
+    <category id="Nixie_tube_1" name="数码管" colour="120">
+    	<block type="TM1637">
+		    <field name="Display">clear</field>
+		  </block>
+		  
+		  <block type="TM1637_2">
+		    <value name="Display2">
+		      <shadow type="text">
+		        <field name="TEXT">1234</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="TM1637_3">
+		    <field name="Display5">true</field>
+		    <value name="Display3">
+		      <shadow type="math_number">
+		        <field name="NUM">12</field>
+		      </shadow>
+		    </value>
+		    <value name="Display4">
+		      <shadow type="math_number">
+		        <field name="NUM">30</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="TM1637_4">
+		    <value name="Display6">
+		      <shadow type="math_number">
+		        <field name="NUM">12</field>
+		      </shadow>
+		    </value>
+		    <value name="Display7">
+		      <shadow type="math_number">
+		        <field name="NUM">34</field>
+		      </shadow>
+		    </value>
+		  </block>  		
+    </category>
+    
+<!-----------------------------温湿度---------------------------------->
+    <category id="Temandhum" name="温湿度" colour="120">
+    	<block type="DHT11">
+		    <field name="DHT">Temperature</field>
+		  </block>		  	  
+    </category>
+    
+<!-----------------------------按键---------------------------------->
+    <category id="Key" name="按键" colour="120">
+    	<block type="anjian"></block>
+		  
+		  <block type="anjian2">
+		    <field name="an">1</field>
+		  </block>
+    </category>
+    
+<!-----------------------------舵机---------------------------------->
+    <category id="servo_R" name="舵机" colour="120">
+			<block type="Servo">
+		    <field name="servo_sel_1">90</field>
+		  </block>
+		  
+		  <block type="Servo2"></block>
+    </category>
+    
+<!-----------------------------红外测距---------------------------------->
+    <category id="infrared_ranging" name="红外测距" colour="120">
+    	<block type="infrared_ranging_1"></block>
+		  
+		  <block type="infrared_ranging_2">
+		    <field name="an">0</field>
+		  </block>
+    </category>
+    
+<!-----------------------------控制模块---------------------------------->
+    <category id="control" name="控制模块" colour="120">
+		  <block type="base_setup"></block>
+		  
+		  <block type="do_while">
+		    <field name="type">true</field>
+		    <value name="select_data">
+		      <shadow type="logic_boolean">
+		        <field name="BOOL">TRUE</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="delay1">
+		    <value name="de">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <field name="de1">1000</field>
+		  </block>
+		  
+		  <block type="controls_if"></block>
+		  		  
+    </category>
+
+<!-----------------------------数学模块---------------------------------->    
+    <category id="math" name="数学模块" colour="120">
+		  <block type="math_number">
+		    <field name="NUM">0</field>
+		  </block>
+		  
+		  <block type="math_arithmetic">
+		    <field name="OP">ADD</field>
+		    <value name="A">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="B">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  		  
+    </category>
+
+<!-----------------------------逻辑模块---------------------------------->    
+    <category id="logic" name="逻辑模块" colour="120">
+		  <block type="logic_compare">
+		    <field name="OP">EQ</field>
+		  </block>
+		  
+		  <block type="logic_operation">
+		    <field name="OP">AND</field>
+		  </block>
+  		  		  
+    </category>
+    
+  </category>
+
+ 
+  <category id="Y2" name="二阶模块" colour="140">  
+<!-----------------------------电机----------------------------------> 
+    <category id="MOTOR_1" name="电机" colour="120">
+		  <block type="MOTOR1"></block>
+		  <block type="MOTOR2"></block>
+		  <block type="MOTOR3"></block>
+		  <block type="MOTOR4"></block>
+		  <block type="MOTOR5"></block>
+		  <block type="MOTOR6"></block>
+		  <block type="MOTOR7"></block>
+		  <block type="MOTOR8"></block>
+		  <block type="MOTOR9"></block>
+		  <block type="MOTOR10"></block>
+		  <block type="MOTOR11"></block>
+		  <block type="MOTOR12"></block>
+		  <block type="MOTOR13"></block>
+    </category>
+
+<!-----------------------------超声波----------------------------------> 
+    <category id="Ultrasonic_ranging_1" name="超声波" colour="120">
+    	<block type="CSB">
+  		</block>
+  		  
+		  <block type="CSB2">
+		    <field name="PD"> == </field>
+		    <field name="1024">0</field>
+		  </block>
+    </category>
+
+<!-----------------------------点阵屏----------------------------------> 
+    <category id="Lattice" name="点阵屏" colour="120">
+		  <block type="MAX7219">
+		    <field name="D1">1</field>
+		  </block>
+		  
+		  <block type="MAX7219_2">
+		    <value name="D1">
+		      <shadow type="text">
+		        <field name="TEXT">A</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="MAX7219_3">
+        <value name="D1">
+          <shadow type="text">
+            <field name="TEXT">A</field>
+          </shadow>
+        </value>
+        <value name="D2">
+          <shadow type="math_number">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+      </block>
+      
+      <block type="MAX7219_4">
+		    <value name="D3">
+		      <block type="display_matrix_bitmap">
+		        <field name="VAR">LEDArray1</field>
+		        <field name="BITMAP">[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]</field>
+		      </block>
+		    </value>
+		  </block>
+		  
+		  <block type="MAX7219_5">
+		    <value name="D4">
+		      <block type="Matrix_img">
+		        <field name="img_">18181818db7e3c18</field>
+		      </block>
+		    </value>
+		  </block>  
+    </category>
+
+<!-----------------------------数码管----------------------------------> 
+    <category id="Nixie_tube_2" name="数码管" colour="120">
+    	<block type="TM1637">
+		    <field name="Display">clear</field>
+		  </block>
+		  
+		  <block type="TM1637_2">
+		    <value name="Display2">
+		      <shadow type="text">
+		        <field name="TEXT">1234</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="TM1637_3">
+		    <field name="Display5">true</field>
+		    <value name="Display3">
+		      <shadow type="math_number">
+		        <field name="NUM">12</field>
+		      </shadow>
+		    </value>
+		    <value name="Display4">
+		      <shadow type="math_number">
+		        <field name="NUM">30</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="TM1637_4">
+		    <value name="Display6">
+		      <shadow type="math_number">
+		        <field name="NUM">12</field>
+		      </shadow>
+		    </value>
+		    <value name="Display7">
+		      <shadow type="math_number">
+		        <field name="NUM">34</field>
+		      </shadow>
+		    </value>
+		  </block>  		
+    </category>
+
+<!-----------------------------路面检测----------------------------------> 
+    <category id="Ground_1" name="地面" colour="120">
+  		<block type="Ground">
+		    <field name="cho1">9</field>
+		    <field name="cho2">1</field>
+		  </block>
+    </category>
+    
+<!-----------------------------寻迹----------------------------------> 
+    <category id="Tracing_1" name="寻迹" colour="120">
+  		<block type="Tracing">
+		    <field name="cho1">9</field>
+		    <field name="cho2">0</field>
+		  </block>
+    </category>
+    
+<!-----------------------------激光----------------------------------> 
+    <category id="Fan" name="激光" colour="120">
+  		<block type="F1">
+		    <field name="digital">HIGH</field>
+  		</block>
+    </category>
+
+<!-----------------------------蜂鸣器---------------------------------->
+    <category id="Tone_2" name="声音" colour="120">
+		  <block type="Tone">
+		    <field name="tone">HIGH</field>
+		  </block>
+		  
+		  <block type="Tone2">
+		    <field name="tone">262</field>
+		    <field name="de">1000</field>
+		    <value name="time">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>
+    
+<!-----------------------------控制模块----------------------------------> 
+    <category id="contro1_2" name="控制模块" colour="120">
+		  <block type="base_setup"></block>
+		  
+		  <block type="do_while">
+		    <field name="type">true</field>
+		    <value name="select_data">
+		      <shadow type="logic_boolean">
+		        <field name="BOOL">TRUE</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="delay1">
+		    <value name="de">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <field name="de1">1000</field>
+		  </block>
+		  
+		  <block type="controls_if"></block>
+    </category>
+
+<!-----------------------------数学模块----------------------------------> 
+    <category id="math_2" name="数学模块" colour="120">
+		  <block type="math_number">
+		    <field name="NUM">0</field>
+		  </block>
+		  
+		  <block type="math_arithmetic">
+		    <field name="OP">ADD</field>
+		    <value name="A">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="B">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>		  		  
+    </category>
+<!-----------------------------逻辑模块----------------------------------> 
+    <category id="logic_2" name="逻辑模块" colour="120">
+		  <block type="logic_compare">
+		    <field name="OP">EQ</field>
+		  </block>
+		  
+		  <block type="logic_operation">
+		    <field name="OP">AND</field>
+		  </block>  		  		  
+    </category>
+  
+  </category>
+  
+<!-----------------------------三阶模块---------------------------------->
+  <category id="Y3" name="三阶模块" colour="140"> 
+
+<!-----------------------------电机---------------------------------->
+    <category id="MOTOR_2" name="电机" colour="120">
+		  <block type="MOTOR2_1"></block>
+		  <block type="MOTOR2_2"></block>
+		  <block type="MOTOR2_3"></block>
+		  <block type="MOTOR2_4"></block>
+		  <block type="MOTOR2_5"></block>
+		  <block type="MOTOR2_6"></block>
+		  <block type="MOTOR2_7"></block>
+		  <block type="MOTOR2_8"></block>
+		  <block type="MOTOR2_9"></block>
+		  <block type="MOTOR2_10"></block>
+		  <block type="MOTOR2_11"></block>
+		  <block type="MOTOR2_12"></block>
+		  <block type="MOTOR2_13"></block>
+    </category>
+    
+<!-----------------------------舵机---------------------------------->
+    <category id="servo_2" name="舵机" colour="120">
+			<block type="Servo3">
+		    <field name="servo_sel_2">0</field>
+		  </block>
+		  
+		  <block type="Servo4">
+		    <field name="servo_sel_3">180</field>
+		  </block>
+		  
+		  <block type="Servo5"></block>
+		  
+		  <block type="Servo6"></block>
+		  
+    </category>
+
+<!-----------------------------超声波---------------------------------->
+    <category id="Ultrasonic_ranging_2" name="超声波" colour="120">
+    	<block type="CSB">
+  		</block>
+  		  
+		  <block type="CSB2">
+		    <field name="PD"> == </field>
+		    <field name="1024">0</field>
+		  </block>
+    </category>
+    
+<!-----------------------------红外遥控---------------------------------->
+    <category id="control_1" name="红外遥控" colour="120">
+		  <block type="control_1">
+		    <statement name="control">
+		      <block type="control_2">
+		        <field name="item1">-1169817856</field>
+		      </block>
+		    </statement>
+		  </block>
+		  
+    </category>
+    
+<!-----------------------------语音播报---------------------------------->
+    <category id="Voice_1" name="语音播报" colour="120">
+		  <block type="Voice">
+		    <field name="sel">0x00</field>
+		  </block>
+    </category>
+    
+<!-----------------------------RGB---------------------------------->
+    <category id="Light_belt_2" name="RGB灯带" colour="120">
+		  <block type="RGB">
+		    <value name="RGB1">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="RGB2">
+		      <shadow type="RGB_color_seclet">
+		        <field name="COLOR">#ff0000</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="RGB2">
+		    <value name="RGB2">
+		      <shadow type="RGB_color_seclet">
+		        <field name="COLOR">#ff0000</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>  
+<!-----------------------------风扇---------------------------------->
+    <category id="Fan_2" name="风扇" colour="120">
+  		<block type="F2">
+		    <field name="digital">HIGH</field>
+  		</block>
+    </category>
+
+<!-----------------------------蜂鸣器---------------------------------->
+    <category id="Tone_3" name="声音" colour="120">
+		  <block type="Tone">
+		    <field name="tone">HIGH</field>
+		  </block>
+		  
+		  <block type="Tone2">
+		    <field name="tone">262</field>
+		    <field name="de">1000</field>
+		    <value name="time">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>
+    
+<!-----------------------------控制模块---------------------------------->
+    <category id="control_3" name="控制模块" colour="120">
+		  <block type="base_setup"></block>
+		  
+		  <block type="do_while">
+		    <field name="type">true</field>
+		    <value name="select_data">
+		      <shadow type="logic_boolean">
+		        <field name="BOOL">TRUE</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="delay1">
+		    <value name="de">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <field name="de1">1000</field>
+		  </block>
+		  
+		  <block type="controls_if"></block>
+    </category>
+
+<!-----------------------------数学模块----------------------------------> 
+    <category id="math_3" name="数学模块" colour="120">
+		  <block type="math_number">
+		    <field name="NUM">0</field>
+		  </block>
+		  
+		  <block type="math_arithmetic">
+		    <field name="OP">ADD</field>
+		    <value name="A">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="B">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>		  		  
+    </category>
+<!-----------------------------逻辑模块----------------------------------> 
+    <category id="logic_3" name="逻辑模块" colour="120">
+		  <block type="logic_compare">
+		    <field name="OP">EQ</field>
+		  </block>
+		  
+		  <block type="logic_operation">
+		    <field name="OP">AND</field>
+		  </block>  		  		  
+    </category>  
+    
+  </category>
+  
+<!-----------------------------四阶模块---------------------------------->
+  <category id="Y4" name="四阶模块" colour="140"> 
+
+<!-----------------------------电机---------------------------------->
+    <category id="MOTOR_3" name="电机" colour="120">
+		  <block type="MOTOR3_1"></block>
+		  <block type="MOTOR3_2"></block>
+		  <block type="MOTOR3_3"></block>
+		  <block type="MOTOR3_4"></block>
+		  <block type="MOTOR3_5"></block>
+		  <block type="MOTOR3_6"></block>
+		  <block type="MOTOR3_7"></block>
+		  <block type="MOTOR3_8"></block>
+		  <block type="MOTOR3_9"></block>
+		  <block type="MOTOR3_10"></block>
+		  <block type="MOTOR3_11"></block>
+		  <block type="MOTOR3_12"></block>
+		  <block type="MOTOR3_13"></block>
+    </category>
+    
+<!-----------------------------舵机---------------------------------->
+    <category id="servo_3" name="舵机" colour="120">
+			<block type="Servo7"></block>
+			<block type="Servo8"></block>
+			<block type="Servo9"></block>
+			<block type="Servo10"></block>
+			<block type="Servo11"></block>
+			<block type="Servo12"></block>
+			<block type="Servo13"></block>
+			<block type="Servo14"></block>
+			<block type="Servo15"></block>
+		  
+    </category>
+
+<!-----------------------------遥控手柄---------------------------------->
+    <category id="PS2control_2" name="遥控手柄" colour="120">
+		  <block type="PS2_1">
+		  	<field name="PS_1">(PSS_LY) &lt; 125</field>
+			</block>
+			
+			<block type="PS2_Button">
+		    <field name="psbt">PSB_GREEN</field>
+		    <field name="btstate">Button</field>
+		  </block>
+		  
+		  <block type="PS2_2">
+		  	<field name="PS_2">L</field>
+			</block>
+			
+			<block type="PS2_3"></block>
+		  
+    </category>
+    
+<!-----------------------------光敏---------------------------------->
+    <category id="photoresistor" name="光敏" colour="120">
+		  <block type="light_1">
+		    <field name="light"></field>
+		  </block>
+    </category>
+    
+<!-----------------------------RGB---------------------------------->
+    <category id="Light_belt_3" name="RGB灯带" colour="120">
+		  <block type="RGB">
+		    <value name="RGB1">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="RGB2">
+		      <shadow type="RGB_color_seclet">
+		        <field name="COLOR">#ff0000</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="RGB2">
+		    <value name="RGB2">
+		      <shadow type="RGB_color_seclet">
+		        <field name="COLOR">#ff0000</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>  
+
+<!-----------------------------蜂鸣器---------------------------------->
+    <category id="Tone_4" name="声音" colour="120">
+		  <block type="Tone">
+		    <field name="tone">HIGH</field>
+		  </block>
+		  
+		  <block type="Tone2">
+		    <field name="tone">262</field>
+		    <field name="de">1000</field>
+		    <value name="time">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>
+    
+<!-----------------------------控制模块---------------------------------->
+    <category id="control_4" name="控制模块" colour="120">
+		  <block type="base_setup"></block>
+		  
+		  <block type="do_while">
+		    <field name="type">true</field>
+		    <value name="select_data">
+		      <shadow type="logic_boolean">
+		        <field name="BOOL">TRUE</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="delay1">
+		    <value name="de">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <field name="de1">1000</field>
+		  </block>
+		  
+		  <block type="controls_if"></block>
+    </category>
+
+<!-----------------------------数学模块----------------------------------> 
+    <category id="math_4" name="数学模块" colour="120">
+		  <block type="math_number">
+		    <field name="NUM">0</field>
+		  </block>
+		  
+		  <block type="math_arithmetic">
+		    <field name="OP">ADD</field>
+		    <value name="A">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="B">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>		  		  
+    </category>
+<!-----------------------------逻辑模块----------------------------------> 
+    <category id="logic_4" name="逻辑模块" colour="120">
+		  <block type="logic_compare">
+		    <field name="OP">EQ</field>
+		  </block>
+		  
+		  <block type="logic_operation">
+		    <field name="OP">AND</field>
+		  </block>  		  		  
+    </category>  
+    
+  </category>  
+
+<!-----------------------------五阶模块---------------------------------->
+  <category id="Y5" name="五阶模块" colour="140"> 
+
+<!-----------------------------舵机---------------------------------->
+    <category id="servo_4" name="舵机" colour="120">
+
+		  <block type="Servo16"></block>
+		  
+		  <block type="Servo17">
+		    <field name="ServoA4">180</field>
+		  </block>
+		  
+		  <block type="Servo18">
+		    <field name="ServoA2">180</field>
+		  </block>
+		  
+		  <block type="Servo19">
+		    <field name="ServoA0">180</field>
+		  </block>
+		  
+		  <block type="Servo20">
+		    <field name="Servo4">180</field>
+		  </block>
+		  
+		  <block type="Servo21">
+		    <field name="Servo10">0</field>
+		  </block>
+		  
+		  <block type="Servo22">
+		    <field name="Servo9">0</field>
+		  </block>
+		  
+		  <block type="Servo23">
+		    <field name="Servo8">0</field>
+		  </block>
+		  
+		  <block type="Servo24">
+		    <field name="Servo6">0</field>
+		  </block>
+		  
+    </category>
+
+<!-----------------------------超声波---------------------------------->
+    <category id="Ultrasonic_ranging_3" name="超声波" colour="120">
+    	<block type="CSB">
+  		</block>
+  		  
+		  <block type="CSB2">
+		    <field name="PD"> == </field>
+		    <field name="1024">0</field>
+		  </block>
+    </category>
+    
+<!-----------------------------红外遥控---------------------------------->
+    <category id="control_2" name="红外遥控" colour="120">
+		  <block type="control_1">
+		    <statement name="control">
+		      <block type="control_2">
+		        <field name="item1">-1169817856</field>
+		      </block>
+		    </statement>
+		  </block>
+		  
+    </category>
+    
+
+<!-----------------------------蜂鸣器---------------------------------->
+    <category id="Tone_5" name="声音" colour="120">
+		  <block type="Tone">
+		    <field name="tone">HIGH</field>
+		  </block>
+		  
+		  <block type="Tone2">
+		    <field name="tone">262</field>
+		    <field name="de">1000</field>
+		    <value name="time">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>  
+    </category>
+    
+<!-----------------------------变量---------------------------------->
+    <category id="variables_1" name="变量" colour="120">
+		  
+		  <block type="variables_declare">
+		    <field name="variables_type">global_variate</field>
+		    <field name="VAR">item</field>
+		    <field name="TYPE">int</field>
+		  </block>
+		  
+		  <block type="variables_change">
+		    <field name="OP">int</field>
+		  </block>
+		  
+    </category>
+    
+<!-----------------------------控制模块---------------------------------->
+    <category id="control_5" name="控制模块" colour="120">
+		  <block type="base_setup"></block>
+		  
+		  <block type="do_while">
+		    <field name="type">true</field>
+		    <value name="select_data">
+		      <shadow type="logic_boolean">
+		        <field name="BOOL">TRUE</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="delay1">
+		    <value name="de">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <field name="de1">1000</field>
+		  </block>
+		  
+		  <block type="controls_if"></block>
+    </category>
+
+<!-----------------------------数学模块----------------------------------> 
+    <category id="math_5" name="数学模块" colour="120">
+		  <block type="math_number">
+		    <field name="NUM">0</field>
+		  </block>
+		  
+		  <block type="math_arithmetic">
+		    <field name="OP">ADD</field>
+		    <value name="A">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		    <value name="B">
+		      <shadow type="math_number">
+		        <field name="NUM">1</field>
+		      </shadow>
+		    </value>
+		  </block>		  		  
+    </category>
+<!-----------------------------逻辑模块----------------------------------> 
+    <category id="logic_5" name="逻辑模块" colour="120">
+		  <block type="logic_compare">
+		    <field name="OP">EQ</field>
+		  </block>
+		  
+		  <block type="logic_operation">
+		    <field name="OP">AND</field>
+		  </block>  		  		  
+    </category>  
+    
+  </category>
+
+<!-----------------------------其他模块-------------------------------- 
+  <category id="Y3" name="测试模块" colour="140"> 
+  
+    <category id="OLED_" name="OLED" colour="120">
+
+    <block type="OLED">
+	    <field name="OLED_TYPE">SSD1306_128X64_NONAME</field>
+	    <field name="NAME">u8g2</field>
+	    <field name="ROTATION">U8G2_R0</field>
+	    <field name="SCL">A0</field>
+	    <field name="SDA">A1</field>
+	    <value name="ADDRESS">
+	      <shadow type="math_number">
+	        <field name="NUM">0x3C</field>
+	      </shadow>
+	    </value>
+	    <next>
+	      <block type="oled_page">
+	        <field name="NAME">u8g2</field>
+	        <statement name="DO">
+	          <block type="procedures_callnoreturn">
+	            <mutation xmlns="http://www.w3.org/1999/xhtml" name="page1"></mutation>
+	          </block>
+	        </statement>
+	      </block>
+	    </next>
+	  </block>
+	  <block type="procedures_defnoreturn">
+	    <field name="NAME">page1</field>
+	    <statement name="STACK">
+	      <block type="oled_set_EN_Font">
+	        <field name="NAME">u8g2</field>
+	        <field name="FONT_NAME">tim</field>
+	        <field name="FONT_SIZE">08</field>
+	        <field name="FONT_STYLE">R</field>
+	        <next>
+	          <block type="oled_print">
+	            <field name="NAME">u8g2</field>
+	            <value name="POS_X">
+	              <shadow type="math_number">
+	                <field name="NUM">0</field>
+	              </shadow>
+	            </value>
+	            <value name="POS_Y">
+	              <shadow type="math_number">
+	                <field name="NUM">20</field>
+	              </shadow>
+	            </value>
+	            <value name="TEXT">
+	              <shadow type="text">
+	                <field name="TEXT">1234</field>
+	              </shadow>
+	            </value>
+	          </block>
+	        </next>
+	      </block>
+	    </statement>
+	  </block>
+		</category>
+		
+		<!-----------------------------其他--------------------------------
+    <category id="LCD_screen" name="LCD液晶屏" colour="120">
+    	<block type="LCD">
+		    <value name="LCD1">
+		      <shadow type="text">
+		        <field name="TEXT">hello</field>
+		      </shadow>
+		    </value>
+		    <value name="LCD2">
+		      <shadow type="text">
+		        <field name="TEXT">world</field>
+		      </shadow>
+		    </value>
+		  </block>
+		  
+		  <block type="group_lcd_power">
+		    <field name="VAR">mylcd</field>
+		    <field name="STAT">clear</field>
+		    <next>
+		      <block type="LCD">
+		        <value name="LCD1">
+		          <shadow type="text">
+		            <field name="TEXT">hello</field>
+		          </shadow>
+		        </value>
+		        <value name="LCD2">
+		          <shadow type="text">
+		            <field name="TEXT">world</field>
+		          </shadow>
+		        </value>
+		        <next>
+		          <block type="controls_delay">
+		            <field name="UNIT">delay</field>
+		            <value name="DELAY_TIME">
+		              <shadow type="math_number">
+		                <field name="NUM">0</field>
+		              </shadow>
+		            </value>
+		          </block>
+		        </next>
+		      </block>
+		    </next>
+		  </block>
+		  
+		  <block type="LCD2">
+		    <value name="LCD1">
+		      <shadow type="text">
+		        <field name="TEXT">hello</field>
+		      </shadow>
+		    </value>
+		    <value name="LCD2">
+		      <shadow type="text">
+		        <field name="TEXT">world</field>
+		      </shadow>
+		    </value>
+		    <value name="Delay">
+		      <shadow type="math_number">
+		        <field name="NUM">0</field>
+		      </shadow>
+		    </value>
+		  </block>
+  		  
+    </category>
+    
+  </category>-->
+  
+</category>
+
+

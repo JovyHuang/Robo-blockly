@@ -1,0 +1,1312 @@
+﻿'use strict';
+goog.provide('Blockly.Blocks.智慧盒子');
+goog.require('Blockly.Blocks');
+
+/************************蜂鸣器*******************/
+Blockly.Blocks.Tone= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("播放声音")
+      .appendField(new Blockly.FieldDropdown([["开","HIGH"],["关","LOW"]]), "tone");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("声音开关");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Tone2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("播放声音 频率")
+      .appendField(new Blockly.FieldDropdown([["1","262"],["2","294"],["3","330"],["4","349"],["5","392"],["6","440"],["7","494"]]), "tone");
+  this.appendValueInput("time")
+      .setCheck(null)
+      .appendField("持续时间");
+  this.appendDummyInput()
+      .appendField(new Blockly.FieldDropdown([["秒","1000"],["毫秒","1"]]), "de");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("声音开关");
+  this.setHelpUrl("");
+  }
+};
+
+/************************RGB*******************/
+Blockly.Blocks.RGB= {
+  init: function() { 
+  this.appendValueInput("RGB1")
+      .setCheck(Number)
+      .appendField("RGB灯号(1~4)");
+  this.appendValueInput("RGB2")
+      .setCheck(null)
+      .appendField("颜色");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("设置指定RGB灯颜色");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.RGB2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("RGB灯(1~4)全亮");
+  this.appendValueInput("RGB2")
+      .setCheck(null)
+      .appendField("颜色");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("设置指定RGB灯颜色");
+  this.setHelpUrl("");
+  }
+};
+
+/************************数码管*******************/
+Blockly.Blocks.TM1637= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("四位数码管")
+      .appendField(new Blockly.FieldDropdown([["清屏","clear"],["闪烁","blink"],["开","on"],["关","off"]]), "Display");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.TM1637_2= {
+  init: function() { 
+  this.appendValueInput("Display2")
+      .setCheck(null)
+      .appendField("四位数码管显示");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.TM1637_3= {
+  init: function() { 
+  this.appendValueInput("Display3")
+      .setCheck(Number)
+      .appendField("四位数码管显示时间");
+  this.appendValueInput("Display4")
+      .setCheck(Number)
+      .appendField("时");
+  this.appendDummyInput()
+      .appendField("分 时钟点设为")
+      .appendField(new Blockly.FieldDropdown([["开","true"],["关","false"]]), "Display5");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.TM1637_4= {
+  init: function() { 
+  this.appendValueInput("Display6")
+      .setCheck(Number)
+      .appendField("四位数码管显示");
+  this.appendValueInput("Display7")
+      .setCheck(Number)
+      .appendField("：");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************温湿度*******************/
+Blockly.Blocks.DHT11= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("获取")
+      .appendField(new Blockly.FieldDropdown([["温度","Temperature"],["湿度","Humidity"]]), "DHT");
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("获取温湿度值");
+  this.setHelpUrl("");
+  }
+};
+
+/************************按键*******************/
+Blockly.Blocks.anjian= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("按键是否被按下？");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回按键状态");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.anjian2= {
+  init: function() { 
+  this.appendStatementInput("PD")
+      .setCheck(null)    
+      .appendField("如果按键")
+      .appendField(new Blockly.FieldDropdown([["按下","1"],["松开","0"]]), "an");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************舵机*******************/
+Blockly.Blocks.Servo= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("舵机")
+      .appendField(new Blockly.FieldDropdown([["打开","90"],["关闭","0"]]), "servo_sel_1");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("设置舵机旋转角度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("读取舵机当前角度");
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回舵机当前停留的角度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo3= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("左臂 舵机")
+      .appendField(new Blockly.FieldDropdown([["向上","0"],["向前","120"],["向下","150"],["向后","180"]]), "servo_sel_2");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("设置舵机旋转角度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo4= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("右臂 舵机")
+      .appendField(new Blockly.FieldDropdown([["向上","180"],["向前","60"],["向下","30"],["向后","0"]]), "servo_sel_3");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("设置舵机旋转角度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo5= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("左臂 读取舵机当前角度");
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回舵机当前停留的角度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo6= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("右臂 读取舵机当前角度");
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回舵机当前停留的角度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo7= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("转盘舵机 中心初始位");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo8= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("大臂舵机 最高初始位");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo9= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("夹爪舵机 松开初始位");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo10= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("转盘舵机 向左");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo11= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("转盘舵机 向右");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo12= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("大臂舵机 向上");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo13= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("大臂舵机 向下");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo14= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("夹爪舵机 抓取");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo15= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("夹爪舵机 松开");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo16= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("所有舵机机械安装初始位");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo17= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("右前大腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向前→","180"],["斜向前⇘","150"],["前靠下↘","120"],["向下↓","90"],["后靠下↙","60"],["斜向后⇙","30"],["向后←","0"]]), "ServoA4");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo18= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("右前小腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向上↑","180"],["斜向上⇗","150"],["上靠前↗","120"],["向前→","90"],["下靠前↘","60"],["斜向下⇘","30"],["向下↓","0"]]), "ServoA2");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo19= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("右后大腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向前→","180"],["斜向前⇘","160"],["前靠下↘","130"],["向下↓","100"],["后靠下↙","70"],["斜向后⇙","40"],["向后←","10"]]), "ServoA0");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo20= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("右后小腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向上↑","180"],["斜向上⇗","135"],["上靠前↗","105"],["向前→","75"],["下靠前↘","45"],["斜向下⇘","15"],["向下↓","0"]]), "Servo4");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo21= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("左前大腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向前→","0"],["斜向前⇘","30"],["前靠下↘","60"],["向下↓","90"],["后靠下↙","120"],["斜向后⇙","150"],["向后←","180"]]), "Servo10");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo22= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("左前小腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向上↑","0"],["斜向上⇗","30"],["上靠前↗","60"],["向前→","90"],["下靠前↘","120"],["斜向下⇘","150"],["向下↓","180"]]), "Servo9");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo23= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("左后大腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向前→","0"],["斜向前⇘","30"],["前靠下↘","60"],["向下↓","90"],["后靠下↙","120"],["斜向后⇙","150"],["向后←","180"]]), "Servo8");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.Servo24= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("左后小腿舵机")
+      .appendField(new Blockly.FieldDropdown([["向上↑","0"],["斜向上⇗","30"],["上靠前↗","60"],["向前→","90"],["下靠前↘","120"],["斜向下⇘","150"],["向下↓","180"]]), "Servo6");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/*************************红外测距*******************/
+Blockly.Blocks.infrared_ranging_1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("是否有物体靠近？");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回红外状态");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.infrared_ranging_2= {
+  init: function() { 
+  this.appendStatementInput("PD")
+      .setCheck(null)    
+      .appendField("如果障碍物")
+      .appendField(new Blockly.FieldDropdown([["靠近","0"],["远离","1"]]), "an");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************其他*******************/
+Blockly.Blocks.OLED= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("OLED初始化")
+      .appendField(new Blockly.FieldTextInput("u8g2"), "SSD1306");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.LCD= {
+  init: function() { 
+  this.appendValueInput("LCD1")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("LCD显示")
+      .appendField("第1行");
+  this.appendValueInput("LCD2")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("  第2行");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("1602LCD显示");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.LCD2= {
+  init: function() { 
+  this.appendValueInput("LCD1")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("LCD显示")
+      .appendField("第1行");
+  this.appendValueInput("LCD2")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("    第2行");
+  this.appendValueInput("Delay")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("    延时（毫秒）");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("1602LCD显示");
+  this.setHelpUrl("");
+  }
+};
+
+/************************延时模块*******************/
+Blockly.Blocks.delay1= {
+  init: function() { 
+  this.appendValueInput("de")
+      .setCheck(Number)
+      .appendField("延时");
+  this.appendDummyInput()
+      .appendField(new Blockly.FieldDropdown([["秒","1000"],["毫秒","1"]]), "de1");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(120);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************电机*******************/
+Blockly.Blocks.MOTOR1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速前进 ↑ ↑ ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速前进 ↑ ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速前进 ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR4= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速后退 ↓ ↓ ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR5= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速后退 ↓ ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR6= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速后退 ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR7= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速左转 ← ← ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR8= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速左转 ← ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR9= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速左转 ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR10= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速右转 → → →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR11= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速右转 → →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR12= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速右转 →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR13= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车停止⚪");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+/************************超声波*******************/
+Blockly.Blocks.CSB= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("超声波测距(cm)");
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回超声波传感器测得的距离");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.CSB2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("超声波测距(cm)")
+      .appendField(new Blockly.FieldDropdown([["="," == "],["≠"," != "],["<"," < "],["≤"," <= "],["＞"," > "],["≥"," >= "]]), "PD")
+      .appendField(new Blockly.FieldNumber(0, 0, 1024, 1), "1024");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("返回超声波传感器测得的距离");
+  this.setHelpUrl("");
+  }
+};
+
+/************************点阵屏*******************/
+Blockly.Blocks.MAX7219= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("点阵屏设为")
+      .appendField(new Blockly.FieldDropdown([["全亮","1"],["全灭","0"]]), "D1");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MAX7219_2= {
+  init: function() { 
+  this.appendValueInput("D1")
+      .setCheck(null)
+      .appendField("点阵屏显示文本");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MAX7219_3= {
+  init: function() { 
+  this.appendValueInput("D1")
+      .setCheck(null)
+      .appendField("点阵屏显示文本");
+  this.appendValueInput("D2")
+      .setCheck(null)
+      .appendField("速度");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MAX7219_4= {
+  init: function() { 
+  this.appendValueInput("D3")
+      .setCheck(null)
+      .appendField("点阵屏图案（LEDArray1~10）");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MAX7219_5= {
+  init: function() { 
+  this.appendValueInput("D4")
+      .setCheck(null)
+      .appendField("点阵屏图案");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************路面*******************/
+Blockly.Blocks.Ground= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("地面传感器")
+      .appendField(new Blockly.FieldDropdown([["左边","9"],["右边","A2"]]), "cho1")
+      .appendField("检测到")
+      .appendField(new Blockly.FieldDropdown([["路面","1"],["悬崖","0"]]), "cho2");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************寻迹*******************/
+Blockly.Blocks.Tracing= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("寻迹传感器")
+      .appendField(new Blockly.FieldDropdown([["左边","9"],["右边","A2"]]), "cho1")
+      .appendField("检测到")
+      .appendField(new Blockly.FieldDropdown([["黑色","0"],["白色","1"]]), "cho2");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************激光*******************/
+Blockly.Blocks.F1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("激光")
+      .appendField(new Blockly.FieldDropdown([["开","HIGH"],["关","LOW"]]), "digital");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************电机*******************/
+Blockly.Blocks.MOTOR2_1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人快速前进 ↑ ↑ ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人中速前进 ↑ ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_3= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人慢速前进 ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_4= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人快速后退 ↓ ↓ ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_5= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人中速后退 ↓ ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_6= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人慢速后退 ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_7= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人快速左转 ← ← ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_8= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人中速左转 ← ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_9= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人慢速左转 ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_10= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人快速右转 → → →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_11= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人中速右转 → →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_12= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人慢速右转 →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR2_13= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("机器人停止⚪");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+/************************风扇*******************/
+Blockly.Blocks.F2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("风扇")
+      .appendField(new Blockly.FieldDropdown([["开","HIGH"],["关","LOW"]]), "digital");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************红外遥控*******************/
+Blockly.Blocks.control_1= {
+  init: function() { 
+  this.appendStatementInput("control")
+      .setCheck(null)    .appendField("红外遥控初始化");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.control_2= {
+  init: function() { 
+  this.appendStatementInput("control2")
+      .setCheck(null)    .appendField("红外遥控按下：")
+      .appendField(new Blockly.FieldDropdown([["1","-1169817856"],["2","-1186529536"],["3","-1203241216"],["4","-1153106176"],["5","-1086259456"],["6","-1136394496"],["7","-133693696"],["8","-367657216"],["9","-167117056"],["*","-384368896"],["0","-434503936"],["#","-233963776"],["↑","-417792256"],["↓","-1387069696"],["←","-150405376"],["→","-1520763136"],["OK","-484638976"]]), "item1");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************语音播报*******************/
+Blockly.Blocks.Voice= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("语音播报模块 播放")
+      .appendField(new Blockly.FieldDropdown([["老师","0x00"],["爸爸","0x01"],["妈妈","0x02"],["爷爷","0x03"],["奶奶","0x04"],["姥姥","0x05"],["姥爷","0x06"],["哥哥","0x07"],["姐姐","0x08"],["叔叔","0x09"],["阿姨","0x0A"],["上午","0x0B"],["下午","0x0C"],["晚上","0x0D"],["前方","0x0E"],["厘米","0x0F"],["新年快乐","0x10"],["身体健康","0x11"],["工作顺利","0x12"],["学习进步","0x13"],["您好","0x14"],["谢谢","0x15"],["的","0x16"],["祝","0x17"],["慢走","0x18"],["欢迎光临","0x19"],["亲爱的","0x1A"],["同学们","0x1B"],["工作辛苦了","0x1C"],["点","0x1D"],["打开","0x1E"],["关闭","0x1F"],["千","0x20"],["百","0x21"],["十","0x22"],["1","0x23"],["2","0x24"],["3","0x25"],["4","0x26"],["5","0x27"],["6","0x28"],["7","0x29"],["8","0x2A"],["9","0x2B"],["0","0x2C"],["当前","0x2D"],["转","0x2E"],["左","0x2F"],["右","0x30"],["请","0x31"],["已","0x32"],["现在","0x33"],["是","0x34"],["红灯","0x35"],["绿灯","0x36"],["黄灯","0x37"],["温度","0x38"],["湿度","0x39"],["欢迎常来","0x3A"],["还有","0x3B"],["秒","0x3C"],["分","0x3D"],["变","0x3E"],["等","0x3F"],["下一次","0x40"],["功能","0x41"],["障碍物","0x42"],["世界那么大,我想去看看","0x43"]]), "sel");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************电机*******************/
+Blockly.Blocks.MOTOR3_1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速前进 ↑ ↑ ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速前进 ↑ ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_3= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速前进 ↑");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_4= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速后退 ↓ ↓ ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_5= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速后退 ↓ ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_6= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速后退 ↓");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(0);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_7= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速左转 ← ← ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_8= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速左转 ← ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_9= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速左转 ←");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(270);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_10= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车快速右转 → → →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_11= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车中速右转 → →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_12= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车慢速右转 →");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(180);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.MOTOR3_13= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("小车停止⚪");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(90);
+  this.setTooltip("设置电机速度");
+  this.setHelpUrl("");
+  }
+};
+
+/************************遥控手柄*******************/
+Blockly.Blocks.PS2_1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("PS2摇杆")
+      .appendField(new Blockly.FieldDropdown([["左侧摇杆向上↑","(PSS_LY) < 125"],["左侧摇杆向下↓","(PSS_LY) > 130"],["左侧摇杆向左←","(PSS_LX) < 125"],["左侧摇杆向右→","(PSS_LX) > 130"],["右侧摇杆向上↑","(PSS_RY) < 125"],["右侧摇杆向下↓","(PSS_RY) > 130"],["右侧摇杆向左←","(PSS_RX) < 125"],["右侧摇杆向右→","(PSS_RX) > 130"]]), "PS_1");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.PS2_2= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("PS2")
+      .appendField(new Blockly.FieldDropdown([["左侧摇杆","L"],["右侧摇杆","R"]]), "PS_2")
+      .appendField("控制小车");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.PS2_3= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("初始化PS2手柄  刷新数据");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+/************************光敏传感器*******************/
+Blockly.Blocks.light_1= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("光敏传感器 检测为")
+      .appendField(new Blockly.FieldDropdown([["白天","!"],["黑夜",""]]), "light");
+  this.setOutput(true, null);
+  this.setColour(30);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
